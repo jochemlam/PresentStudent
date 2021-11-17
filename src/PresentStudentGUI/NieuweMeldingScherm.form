@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="PresentStudentGUI.NieuweMeldingScherm">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="15" column-count="17" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="541" height="434"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="1c2be" class="javax.swing.JButton" binding="AnnuleerKnop">
+        <constraints>
+          <grid row="13" column="15" row-span="2" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Annuleer"/>
+        </properties>
+      </component>
+      <component id="3a82c" class="javax.swing.JButton" binding="VerzendKnop">
+        <constraints>
+          <grid row="13" column="0" row-span="2" col-span="15" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Verzend"/>
+        </properties>
+      </component>
+      <component id="8c00a" class="javax.swing.JTextField" binding="berichtTextField" default-binding="true">
+        <constraints>
+          <grid row="7" column="0" row-span="6" col-span="17" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Bericht..."/>
+        </properties>
+      </component>
+      <component id="1dba2" class="javax.swing.JTextField" binding="naarWieGaatDitTextField" default-binding="true">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="15" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Naar wie gaat dit bericht"/>
+        </properties>
+      </component>
+      <component id="2a530" class="javax.swing.JLabel" binding="TitelMeldingMaken">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Melding maken"/>
+        </properties>
+      </component>
+      <component id="4024e" class="javax.swing.JCheckBox" binding="teLaatCheckBox" default-binding="true">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="8" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Te Laat"/>
+        </properties>
+      </component>
+      <component id="704e2" class="javax.swing.JCheckBox" binding="absentCheckBox" default-binding="true">
+        <constraints>
+          <grid row="3" column="8" row-span="1" col-span="9" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Absent"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

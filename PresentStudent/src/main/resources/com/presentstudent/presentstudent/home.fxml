@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentstudent.presentstudent.Controller">
+   <bottom>
+      <AnchorPane prefHeight="287.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="scan" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="43.0" mnemonicParsing="false" onAction="#scan" prefHeight="39.0" prefWidth="191.0" text="Scan" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button id="goSchedule" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="104.0" mnemonicParsing="false" onAction="#goSchedule" prefHeight="39.0" prefWidth="191.0" text="Rooster" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button id="goAbsent" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="166.0" mnemonicParsing="false" onAction="#goAbsentOverview" prefHeight="39.0" prefWidth="191.0" text="Absent" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </bottom>
+   <top>
+      <AnchorPane prefHeight="282.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="53.0" layoutY="44.0" text="Welkom!">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="130.0" prefHeight="41.0" prefWidth="199.0" text="Lessen vandaag:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </top>
+</BorderPane>

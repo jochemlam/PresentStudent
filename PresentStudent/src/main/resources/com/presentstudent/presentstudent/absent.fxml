@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentstudent.presentstudent.Controller">
+   <top>
+      <AnchorPane prefHeight="80.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="24.0" layoutY="35.0" prefHeight="28.0" prefWidth="114.0" text="Melding maken">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="407.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <RadioButton layoutX="90.0" layoutY="134.0" mnemonicParsing="false" text="Te laat">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="231.0" layoutY="134.0" mnemonicParsing="false" text="Absent">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </RadioButton>
+            <TextArea id="message" layoutX="14.0" layoutY="303.0" prefHeight="83.0" prefWidth="366.0" promptText="Bericht..." />
+            <TextField id="recipient" alignment="CENTER" layoutX="16.0" layoutY="248.0" prefHeight="26.0" prefWidth="362.0" promptText="Naar wie gaat dit bericht?" />
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="103.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="sendNote" layoutX="60.0" layoutY="14.0" mnemonicParsing="false" onAction="#sendAbsent" prefHeight="65.0" prefWidth="131.0" text="Verzend" />
+            <Button id="goHome" layoutX="208.0" layoutY="14.0" mnemonicParsing="false" onAction="#goAbsentOverview" prefHeight="65.0" prefWidth="131.0" text="Annuleer" />
+         </children></AnchorPane>
+   </bottom>
+</BorderPane>

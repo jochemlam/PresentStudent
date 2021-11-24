@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.presentstudent.presentstudent.Controller">
+   <top>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="94.0" layoutY="57.0" text="Vorige week">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label layoutX="94.0" layoutY="87.0" text="Deze week">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label layoutX="94.0" layoutY="117.0" text="Volgende week">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Button id="lastWeek" layoutX="254.0" layoutY="57.0" mnemonicParsing="false" onAction="#lastWeek" text="Rooster" />
+            <Button id="thisWeek" layoutX="254.0" layoutY="87.0" mnemonicParsing="false" onAction="#thisWeek" text="Rooster" />
+            <Button id="nextWeek" layoutX="254.0" layoutY="117.0" mnemonicParsing="false" onAction="#nextWeek" text="Rooster" />
+         </children></AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="sync" layoutX="38.0" layoutY="137.0" mnemonicParsing="false" onAction="#sync" text="Synchroniseer rooster">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button id="sync" layoutX="288.0" layoutY="137.0" mnemonicParsing="false" onAction="#goHome" text="Terug">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

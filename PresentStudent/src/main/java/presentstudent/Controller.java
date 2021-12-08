@@ -1,4 +1,4 @@
-package com.presentstudent.presentstudent;
+package presentstudent;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,18 +49,18 @@ public class Controller {
 
     @FXML
     void sync(ActionEvent event) throws IOException {
-
+    // sync met server
     }
 
     @FXML
     void scan(ActionEvent event){
-
+    // scan nfc
     }
 
     @FXML
     void sendAbsent(ActionEvent event) throws IOException {
         // code voor verzenden hier
-
+        
 
 
         // dit is om terug te gaan naar het vorige scherm.

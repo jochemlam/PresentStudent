@@ -1,4 +1,4 @@
-package com.presentstudent.presentstudent;
+package presentstudent;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

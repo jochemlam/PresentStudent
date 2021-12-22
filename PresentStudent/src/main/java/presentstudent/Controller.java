@@ -6,11 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Controller {
+
+    Database database = new Database();
 
     @FXML
     void goAbsent(ActionEvent event) throws IOException {
@@ -49,18 +52,38 @@ public class Controller {
 
     @FXML
     void sync(ActionEvent event) throws IOException {
-    // sync met server
+        //sync
     }
 
     @FXML
-    void scan(ActionEvent event){
-    // scan nfc
+    void scan() {
+        //scan
+    }
+
+    @FXML
+    void addStudent(String voornaam, String achternaam) {
+        database.createStudent(voornaam, achternaam);
+    }
+
+    @FXML
+    void addTeacher(String voornaam, String achternaam) {
+        database.createTeacher(voornaam, achternaam);
+    }
+
+    @FXML
+    void addLesson(int lesnummer, String docentnaam) {
+        database.createLesson(lesnummer, docentnaam);
+    }
+
+    @FXML
+    void addMention(String reden, String soort, int leerlingnummer, int lesnummer) {
+        database.createMention(reden, soort, leerlingnummer, lesnummer);
     }
 
     @FXML
     void sendAbsent(ActionEvent event) throws IOException {
         // code voor verzenden hier
-        
+
 
 
         // dit is om terug te gaan naar het vorige scherm.

@@ -12,4 +12,6 @@ module presentstudent.presentstudent {
     
     opens presentstudent to javafx.fxml;
     exports presentstudent;
+
+    requires java.sql;
 }

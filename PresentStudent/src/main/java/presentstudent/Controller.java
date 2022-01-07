@@ -7,6 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +17,57 @@ import java.io.IOException;
 public class Controller {
 
     Database database = new Database();
+    ToggleGroup group = new ToggleGroup();
+
+    int leerlingnummer = 3;
+    int lesnummer = 1;
+
+    @FXML
+    TextArea textMessage;
+
+    @FXML
+    RadioButton lateButton;
+
+    @FXML
+    RadioButton absentButton;
+
+    @FXML
+    void initialize() {
+        addStudent("arjan", "hertog");
+        addStudent("jochem", "lammertsma");
+        addStudent("maikel", "bazuin");
+        addStudent("justin", "rid");
+        addStudent("sjaakie", "chocoladefabriek");
+        addStudent("mouhsin", "doudouh");
+        addStudent("marco", "borsato");
+        addStudent("amine", "sakaki");
+
+        addTeacher("henk", "potvis");
+        addTeacher("hans", "klaar");
+        addTeacher("gerard", "bel");
+        addTeacher("mark", "rutte");
+        addTeacher("jan", "korteachternaam");
+        addTeacher("joost", "andersgeaard");
+
+        addLesson(lesnummer, "henk");
+        addLesson(lesnummer, "hans");
+        addLesson(lesnummer, "gerard");
+        addLesson(lesnummer, "mark");
+        addLesson(lesnummer, "jan");
+        addLesson(lesnummer, "joost");
+    }
+
+    @FXML
+    String getButtonState() {
+        if (lateButton.isSelected()) {
+            return "telaat";
+        }
+        else if (absentButton.isSelected()) {
+            return "absent";
+        }
+        return null;
+    }
+
 
     @FXML
     void goAbsent(ActionEvent event) throws IOException {
@@ -83,7 +137,8 @@ public class Controller {
     @FXML
     void sendAbsent(ActionEvent event) throws IOException {
         // code voor verzenden hier
-
+        String message = textMessage.getText();
+        addMention(message, getButtonState(), leerlingnummer, lesnummer);
 
 
         // dit is om terug te gaan naar het vorige scherm.

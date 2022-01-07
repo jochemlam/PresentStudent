@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentstudent.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentstudent.Controller">
    <top>
       <AnchorPane prefHeight="80.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
@@ -18,18 +24,21 @@
    <center>
       <AnchorPane prefHeight="407.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <RadioButton layoutX="90.0" layoutY="134.0" mnemonicParsing="false" text="Te laat">
+            <TextArea id="message" fx:id="textMessage" layoutX="14.0" layoutY="303.0" prefHeight="83.0" prefWidth="366.0" promptText="Bericht..." />
+            <TextField id="recipient" alignment="CENTER" layoutX="16.0" layoutY="248.0" prefHeight="26.0" prefWidth="362.0" promptText="Wat is het desbetreffende lesnummer?" />
+            <RadioButton id="absentButton" fx:id="absentButton" layoutX="228.0" layoutY="111.0" mnemonicParsing="false" text="Absent">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="stateGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton id="lateButton" fx:id="lateButton" layoutX="80.0" layoutY="111.0" mnemonicParsing="false" selected="true" text="Te laat" toggleGroup="$stateGroup">
                <font>
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="231.0" layoutY="134.0" mnemonicParsing="false" text="Absent">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </RadioButton>
-            <TextArea id="message" layoutX="14.0" layoutY="303.0" prefHeight="83.0" prefWidth="366.0" promptText="Bericht..." />
-            <TextField id="recipient" alignment="CENTER" layoutX="16.0" layoutY="248.0" prefHeight="26.0" prefWidth="362.0" promptText="Naar wie gaat dit bericht?" />
          </children>
       </AnchorPane>
    </center>

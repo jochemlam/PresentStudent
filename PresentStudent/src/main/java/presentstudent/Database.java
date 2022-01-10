@@ -4,7 +4,6 @@ import java.sql.*;
 import java.time.LocalDate;
 
 public class Database extends Object {
-
     Connection connection;
     PreparedStatement preparedStatement = null;
 
@@ -15,7 +14,6 @@ public class Database extends Object {
         String connection = "jdbc:mysql://localhost:3306/presentstudent";
         String user = "root";
         String password = "hhs";
-
         try {
             Class.forName(driver);
             conn = DriverManager.getConnection(connection, user, password);

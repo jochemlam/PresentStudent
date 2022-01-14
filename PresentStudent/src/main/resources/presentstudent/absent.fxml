@@ -24,7 +24,7 @@
    <center>
       <AnchorPane prefHeight="407.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea id="message" fx:id="textMessage" layoutX="14.0" layoutY="303.0" prefHeight="83.0" prefWidth="366.0" promptText="Bericht..." />
+            <TextArea id="message" fx:id="textBox" layoutX="14.0" layoutY="303.0" prefHeight="83.0" prefWidth="366.0" promptText="Bericht..." />
             <TextField id="recipient" alignment="CENTER" layoutX="16.0" layoutY="248.0" prefHeight="26.0" prefWidth="362.0" promptText="Wat is het desbetreffende lesnummer?" />
             <RadioButton id="absentButton" fx:id="absentButton" layoutX="228.0" layoutY="111.0" mnemonicParsing="false" text="Absent">
                <font>

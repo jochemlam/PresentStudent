@@ -19,43 +19,15 @@ public class Controller {
     Database database = new Database();
     ToggleGroup group = new ToggleGroup();
 
-    int leerlingnummer = 3;
-    int lesnummer = 1;
 
     @FXML
-    TextArea textMessage;
+    TextArea textBox;
 
     @FXML
     RadioButton lateButton;
 
     @FXML
     RadioButton absentButton;
-
-    @FXML
-    void initialize() {
-        addStudent("arjan", "hertog");
-        addStudent("jochem", "lammertsma");
-        addStudent("maikel", "bazuin");
-        addStudent("justin", "rid");
-        addStudent("sjaakie", "chocoladefabriek");
-        addStudent("mouhsin", "doudouh");
-        addStudent("marco", "borsato");
-        addStudent("amine", "sakaki");
-
-        addTeacher("henk", "potvis");
-        addTeacher("hans", "klaar");
-        addTeacher("gerard", "bel");
-        addTeacher("mark", "rutte");
-        addTeacher("jan", "korteachternaam");
-        addTeacher("joost", "andersgeaard");
-
-        addLesson(lesnummer, "henk");
-        addLesson(lesnummer, "hans");
-        addLesson(lesnummer, "gerard");
-        addLesson(lesnummer, "mark");
-        addLesson(lesnummer, "jan");
-        addLesson(lesnummer, "joost");
-    }
 
     @FXML
     String getButtonState() {
@@ -112,34 +84,14 @@ public class Controller {
     @FXML
     void scan() {
         //scan
+
     }
 
     @FXML
-    void addStudent(String voornaam, String achternaam) {
-        database.createStudent(voornaam, achternaam);
-    }
-
-    @FXML
-    void addTeacher(String voornaam, String achternaam) {
-        database.createTeacher(voornaam, achternaam);
-    }
-
-    @FXML
-    void addLesson(int lesnummer, String docentnaam) {
-        database.createLesson(lesnummer, docentnaam);
-    }
-
-    @FXML
-    void addMention(String reden, String soort, int leerlingnummer, int lesnummer) {
-        database.createMention(reden, soort, leerlingnummer, lesnummer);
-    }
-
-    @FXML
-    void sendAbsent(ActionEvent event) throws IOException {
+    public void sendAbsent(ActionEvent event) throws IOException {
         // code voor verzenden hier
-        String message = textMessage.getText();
-        addMention(message, getButtonState(), leerlingnummer, lesnummer);
-
+        String message = textBox.getText();
+        database.createMention(message, getButtonState(), 55, 5);
 
         // dit is om terug te gaan naar het vorige scherm.
         goAbsentOverview(event);

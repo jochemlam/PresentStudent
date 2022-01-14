@@ -4,19 +4,22 @@ import java.sql.*;
 import java.time.LocalDate;
 
 public class Database extends Object {
-    Connection connection;
+    public static Connection connection;
     PreparedStatement preparedStatement = null;
 
-    private Connection connect() {
+    public static final String servername = "localhost";
+    public static final String port = "3306";
+    public static final String database = "presentstudent";
+    public static final String username = "root";
+    public static final String password = "hhs";
+    public static final String url = "jdbc:mysql://" + servername +":"+ port +  "/" + database;
+
+    private static Connection connect() {
         Connection conn = null;
         String driver = "com.mysql.cj.jdbc.Driver";
-        // MySQL connection string, pas zonodig het pad aan:
-        String connection = "jdbc:mysql://localhost:3306/presentstudent";
-        String user = "root";
-        String password = "hhs";
         try {
             Class.forName(driver);
-            conn = DriverManager.getConnection(connection, user, password);
+            conn = DriverManager.getConnection(url, username, password);
         }
         catch (Exception e) {
             System.err.println(e.getMessage());
@@ -24,7 +27,7 @@ public class Database extends Object {
         return conn;
     }
 
-    public void main(String[] args) {
+    public static void startConnection() {
         connection = connect();
     }
 
@@ -59,15 +62,16 @@ public class Database extends Object {
             preparedStatement.setString(2, achternaam);
 
             preparedStatement.executeUpdate();
+            preparedStatement.clearParameters();
 
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
     }
 
-    public void createLesson(int lesnummer, String docent) {
-        String query = "INSERT INTO les(lesnummer, docent)"
-                + "VALUES(?,?)";
+    public void createLesson(int lesnummer, int docent) {
+        String query = "INSERT INTO les(lesnummer, tijdstip, docent)"
+                + "VALUES(?,?,?)";
 
 
         preparedStatement = null;
@@ -75,9 +79,11 @@ public class Database extends Object {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, lesnummer);
-            preparedStatement.setString(2, docent);
+            preparedStatement.setTime(2, getTime());
+            preparedStatement.setInt(3, docent);
 
             preparedStatement.executeUpdate();
+            preparedStatement.clearParameters();
 
         } catch (Exception e){
             System.err.println(e.getMessage());
@@ -102,6 +108,7 @@ public class Database extends Object {
             preparedStatement.setInt(6, lesnummer);
 
             preparedStatement.executeUpdate();
+            preparedStatement.clearParameters();
 
         } catch (Exception e){
             System.err.println(e.getMessage());
@@ -112,7 +119,7 @@ public class Database extends Object {
         Date date = Date.valueOf(LocalDate.now());
         return date;
     }
-    public Time getTime() {
+    public static Time getTime() {
         Time time = new Time(System.currentTimeMillis());
         return time;
     }

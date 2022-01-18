@@ -103,7 +103,6 @@ public class Database extends Object {
         String query = "INSERT INTO melding(reden, soort, datum, tijd, leerling, les)"
                 + "VALUES(?,?,?,?,?,?)";
 
-
         preparedStatement = null;
 
         try {
@@ -118,11 +117,39 @@ public class Database extends Object {
             preparedStatement.executeUpdate();
             preparedStatement.clearParameters();
 
-            wait(3000);
             notification(leerlingnummer + " is " + soort, reden, 10).showInformation();
 
         } catch (Exception e){
             System.err.println(e.getMessage());
+        }
+    }
+
+    public void getStudentName(int studentNummer) {
+        String query = "SELECT voornaam, achternaam FROM leerling WHERE leerlingnummer = studentNummer + VALUES(?)";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, studentNummer);
+            preparedStatement.executeUpdate();
+            preparedStatement.clearParameters();
+        }
+        catch (SQLException e) {
+            System.out.printf("Cannot create preparestatement");
+        }
+
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                String firstName = rs.getString("voornaam");
+                String lastName = rs.getString("achternaam");
+                String fullName = firstName + " " + lastName;
+
+                System.out.println(fullName);
+            }
+        }
+        catch (SQLException e){
+            System.out.printf("Something wrong during the query");
         }
     }
 

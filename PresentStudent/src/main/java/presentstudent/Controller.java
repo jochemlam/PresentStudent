@@ -87,7 +87,7 @@ public class Controller {
     @FXML
     void scan() {
         //scan
-
+        database.getStudentName(55);
     }
 
     @FXML

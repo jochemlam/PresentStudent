@@ -3,6 +3,7 @@ package presentstudent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +12,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 
@@ -92,7 +95,6 @@ public class Controller {
         // code voor verzenden hier
         String message = textBox.getText();
         database.createMention(message, getButtonState(), 55, 5);
-
         // dit is om terug te gaan naar het vorige scherm.
         goAbsentOverview(event);
     }
@@ -107,5 +109,7 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+
+
 
 }

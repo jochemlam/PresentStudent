@@ -1,5 +1,9 @@
 package presentstudent;
 
+import javafx.geometry.Pos;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -92,6 +96,10 @@ public class Database extends Object {
 
     public void createMention(String reden, String soort, int leerlingnummer, int lesnummer) {
 
+        if (reden == null || reden == "") {
+            reden = "Geen reden opgegeven.";
+        }
+
         String query = "INSERT INTO melding(reden, soort, datum, tijd, leerling, les)"
                 + "VALUES(?,?,?,?,?,?)";
 
@@ -110,6 +118,9 @@ public class Database extends Object {
             preparedStatement.executeUpdate();
             preparedStatement.clearParameters();
 
+            wait(3000);
+            notification(leerlingnummer + " is " + soort, reden, 10).showInformation();
+
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
@@ -122,6 +133,15 @@ public class Database extends Object {
     public static Time getTime() {
         Time time = new Time(System.currentTimeMillis());
         return time;
+    }
+
+    public Notifications notification(String title, String text, double showDuration) {
+        Notifications notificationBuilder = Notifications.create()
+                .title(title)
+                .text(text)
+                .hideAfter(Duration.millis(showDuration * 1000))
+                .position(Pos.BOTTOM_RIGHT);
+        return notificationBuilder;
     }
 
 }

@@ -87,14 +87,13 @@ public class Controller {
     @FXML
     void scan() {
         //scan
-        database.getStudentName(55);
     }
 
     @FXML
     public void sendAbsent(ActionEvent event) throws IOException {
         // code voor verzenden hier
         String message = textBox.getText();
-        database.createMention(message, getButtonState(), 55, 5);
+        database.createMention(message, getButtonState(), 60, 5);
         // dit is om terug te gaan naar het vorige scherm.
         goAbsentOverview(event);
     }

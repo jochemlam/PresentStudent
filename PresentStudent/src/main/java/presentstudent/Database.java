@@ -117,25 +117,15 @@ public class Database extends Object {
             preparedStatement.executeUpdate();
             preparedStatement.clearParameters();
 
-            notification(leerlingnummer + " is " + soort, reden, 10).showInformation();
+            notification(getStudentName(leerlingnummer) + " is " + soort, reden, 10).showInformation();
 
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
     }
 
-    public void getStudentName(int studentNummer) {
-        String query = "SELECT voornaam, achternaam FROM leerling WHERE leerlingnummer = studentNummer + VALUES(?)";
-
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, studentNummer);
-            preparedStatement.executeUpdate();
-            preparedStatement.clearParameters();
-        }
-        catch (SQLException e) {
-            System.out.printf("Cannot create preparestatement");
-        }
+    public String getStudentName(int studentNummer) {
+        String query = "SELECT voornaam, achternaam FROM leerling WHERE leerlingnummer = " + studentNummer;
 
         try {
             Statement stmt = connection.createStatement();
@@ -145,12 +135,13 @@ public class Database extends Object {
                 String lastName = rs.getString("achternaam");
                 String fullName = firstName + " " + lastName;
 
-                System.out.println(fullName);
+                return fullName;
             }
         }
         catch (SQLException e){
             System.out.printf("Something wrong during the query");
         }
+        return null;
     }
 
     public Date getDate() {

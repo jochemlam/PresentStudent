@@ -87,6 +87,7 @@ public class Controller {
     @FXML
     void scan() {
         //scan
+        database.createPresence(6);
     }
 
     @FXML

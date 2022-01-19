@@ -1,7 +1,9 @@
-package nl.dehaagsehogeschool.thechallenge;
+package presentstudent;
+
+
 
 import java.text.SimpleDateFormat;
-import java.util.*; // Scanner om invoer te lezen
+import java.util.Date;
 
 import com.fazecast.jSerialComm.*;
 import static com.fazecast.jSerialComm.SerialPort.*;
@@ -9,13 +11,16 @@ import static com.fazecast.jSerialComm.SerialPort.*;
 
 public class ComPortSendReceive {
 
-    public static SerialPort serialPort;
+    public SerialPort serialPort;
+    public String tijdstip = "";
+    public static String tagUID;
 
-    public static void main(String[] args) {
+    public void startSerial() {
 
+        // detect usable port name
         String portName;
         SerialPort[] portNames = SerialPort.getCommPorts();
-            portName = portNames[0].getSystemPortName();
+        portName = portNames[0].getSystemPortName();
         serialPort = SerialPort.getCommPort(portName);
 
         try {
@@ -27,12 +32,10 @@ public class ComPortSendReceive {
         } catch (Exception ex) {
             System.out.println("Fout bij schrijven naar seriële poort: " + ex);
         }
+            listen();
+    }
 
-        try {
-            Thread.sleep(5000); // 5 seconden pauzeren
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void listen() {
 
         StringBuilder bericht = new StringBuilder();
 
@@ -40,16 +43,19 @@ public class ComPortSendReceive {
 
         serialPort.addDataListener(new SerialPortDataListener() {
             @Override
-            public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_AVAILABLE; }
+            public int getListeningEvents() {
+                return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
+            }
 
             public void serialEvent(SerialPortEvent event) {
 
-                if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE) { return; }
+                if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE) {
+                    return;
+                }
 
                 String vorigTijdstip = null;
                 byte buffer[] = new byte[serialPort.bytesAvailable()];
                 int numRead = serialPort.readBytes(buffer, buffer.length);
-
 
                 for (byte b : buffer) {
                     if ((b == '\r' || b == '\n') && bericht.length() > 0) { // regeleinde gedetecteerd ('\r' of '\n')
@@ -57,25 +63,10 @@ public class ComPortSendReceive {
                         // StringBuilder naar String converteren
                         String berichtData = bericht.toString();
 
-                        // tijdstip = nu
-                        String tijdstip = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-
-                        // regeleindes verwijderen uit data en tijdstip
                         berichtData = berichtData.replace("\n", "").replace("\r", "");
-                        tijdstip = tijdstip.replace("\n", "").replace("\r", "");
 
-
-                        if (tijdstip.equals(vorigTijdstip)) {
-                            System.out.println("Regel uit buffer genegeerd:");
-                        }
-                        else {
-                           // database.insert(tijdstip, UID);  //Deze regel uitcommenten als SQL nog niet werkt.
-                        }
-
-                        System.out.print(tijdstip);
-                        System.out.print("  ");
                         System.out.println(berichtData);
-                        vorigTijdstip = tijdstip;
+                        tagUID = berichtData;
 
                         bericht.setLength(0);
                     } else {

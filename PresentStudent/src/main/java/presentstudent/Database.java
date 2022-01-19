@@ -124,6 +124,27 @@ public class Database extends Object {
         }
     }
 
+    public void createPresence(int lokaal) {
+        String query = "INSERT INTO presentie(uid, tijdstip, lokaal)"
+                + "VALUES(?,?,?)";
+
+
+        preparedStatement = null;
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, ComPortSendReceive.tagUID);
+            preparedStatement.setTime(2, getTime());
+            preparedStatement.setInt(3, lokaal);
+
+            preparedStatement.executeUpdate();
+            preparedStatement.clearParameters();
+
+        } catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+
     public String getStudentName(int studentNummer) {
         String query = "SELECT voornaam, achternaam FROM leerling WHERE leerlingnummer = " + studentNummer;
 

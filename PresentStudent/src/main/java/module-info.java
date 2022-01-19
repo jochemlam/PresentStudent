@@ -14,4 +14,5 @@ module presentstudent.presentstudent {
     exports presentstudent;
 
     requires java.sql;
+    requires com.fazecast.jSerialComm;
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
+        ComPortSendReceive serial = new ComPortSendReceive();
 
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("home.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 600);
@@ -17,6 +18,7 @@ public class Application extends javafx.application.Application {
         primaryStage.show();
 
         Database.startConnection();
+        serial.startSerial();
     }
 
 

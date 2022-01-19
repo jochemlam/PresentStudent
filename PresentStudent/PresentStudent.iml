@@ -37,5 +37,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: c3p0:c3p0:0.9.1.2" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.27" level="project" />
+    <orderEntry type="library" name="jSerialComm-2.8.41" level="project" />
   </component>
 </module>
